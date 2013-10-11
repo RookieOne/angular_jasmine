@@ -11,15 +11,31 @@
   <!-- include source files here... -->
   <script type="text/javascript" src="src/application.js"></script>
   <script type="text/javascript" src="src/grey-hounds-controller.js"></script>
+  <script type="text/javascript" src="src/people-controller.js"></script>
   <script type="text/javascript" src="src/bacon-bus.js"></script>
 
 </head>
 
-<body ng-app="angularApp" ng-controller="GreyHoundsController" ng-init="init()">
-  <ul>
-    <li ng-repeat="greyHound in greyHounds">
-      {{ greyHound.name }}
-    </li>
-  </ul>
+<body ng-app="angularApp">
+  <div ng-controller="PeopleController">
+    <ul>
+      <li ng-repeat="person in people">
+        {{ person.name }}
+      </li>
+    </ul>
+  </div>
+  <div ng-controller="GreyHoundsController" ng-init="init()">
+    <ul>
+      <li ng-repeat="greyHound in greyHounds">
+        {{ greyHound.name }}
+      </li>
+    </ul>
+    <hr />
+    <ul>
+      <li ng-repeat="msg in messages">
+        {{ msg }}
+      </li>
+    </ul>
+  </div>
 </body>
 </html>

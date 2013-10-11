@@ -1,21 +1,13 @@
-// bus = new Bacon.Bus();
-// bus.push("Hello World");
-// myProp = bus.toProperty();
-// x = null;
-// monkey = {
-//   setIt: function(m) {
-//     x = m;
-//   }
-// }
+App.controller("GreyHoundsController", function($scope, $http, $rootScope, BaconBus) {
 
-// myProp.assign(monkey, "setIt");
+  $scope.init = function() {
+    $scope.messages = [];
+    $scope.greyHounds = [{ id: 1, name: "Penny"}, { id:2, name: "Moon"}];
+    $rootScope.people = [{ id: 1, name: "JB" }, { id: 2, name: "Kiyu" }];
+  }
 
-
-App.controller("GreyHoundsController", function($scope, $http) {
-
-  EQ.filter(function(msg) {
-    return msg.model.type == "GreyHound";
-  }).onValue(function(msg) {
+  BaconBus.filter("GreyHound", function(msg) {
+    $scope.messages.push(msg);
     for(var i=0; i < $scope.greyHounds.length; i++) {
       greyHound = $scope.greyHounds[i];
       if (greyHound.id == msg.model.id) {
@@ -24,10 +16,6 @@ App.controller("GreyHoundsController", function($scope, $http) {
     }
     $scope.$apply();
   });
-
-  $scope.init = function() {
-    $scope.greyHounds = [{ id: 1, name: "Penny"}, { id:2, name: "Moon"}];
-  }
 
   $scope.getGreyHounds = function() {
 
