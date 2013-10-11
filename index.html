@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Greyhounds</title>
+
+  <script type="text/javascript" src="lib/angular.min.js"></script>
+  <script type="text/javascript" src="lib/bacon.js"></script>
+
+
+  <!-- include source files here... -->
+  <script type="text/javascript" src="src/application.js"></script>
+  <script type="text/javascript" src="src/grey-hounds-controller.js"></script>
+  <script type="text/javascript" src="src/bacon-bus.js"></script>
+
+</head>
+
+<body ng-app="angularApp" ng-controller="GreyHoundsController" ng-init="init()">
+  <ul>
+    <li ng-repeat="greyHound in greyHounds">
+      {{ greyHound.name }}
+    </li>
+  </ul>
+</body>
+</html>
